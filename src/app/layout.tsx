@@ -1,11 +1,65 @@
 import type { Metadata, Viewport } from 'next'
+import localFont from 'next/font/local'
 
 import './globals.css'
 import site from '@/config'
+import { cn } from '@/utils/cn'
 
 type RootLayoutProps = {
   children: React.ReactNode
 }
+
+const SFMono = localFont({
+  src: [
+    {
+      path: '../../public/fonts/SF-Mono-Regular.otf',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: '../../public/fonts/SF-Mono-Bold.otf',
+      weight: '700',
+      style: 'normal'
+    },
+    {
+      path: '../../public/fonts/SF-Mono-Medium.otf',
+      weight: '500',
+      style: 'normal'
+    },
+    {
+      path: '../../public/fonts/SF-Mono-Semibold.otf',
+      weight: '600',
+      style: 'normal'
+    }
+  ],
+  variable: '--font-sf-mono'
+})
+
+const SFPro = localFont({
+  src: [
+    {
+      path: '../../public/fonts/SF-Pro-Display-Regular.otf',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: '../../public/fonts/SF-Pro-Display-Bold.otf',
+      weight: '700',
+      style: 'normal'
+    },
+    {
+      path: '../../public/fonts/SF-Pro-Display-Medium.otf',
+      weight: '500',
+      style: 'normal'
+    },
+    {
+      path: '../../public/fonts/SF-Pro-Display-Semibold.otf',
+      weight: '600',
+      style: 'normal'
+    }
+  ],
+  variable: '--font-sf-pro'
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -79,8 +133,8 @@ const RootLayout = (props: RootLayoutProps) => {
   const { children } = props
 
   return (
-    <html lang='en-US'>
-      <body className='bg-[#1e1e1e] text-white'>{children}</body>
+    <html lang='en-US' className={cn(SFMono.variable, SFPro.variable)}>
+      <body className='bg-[#1e1e1e] font-default text-white'>{children}</body>
     </html>
   )
 }
