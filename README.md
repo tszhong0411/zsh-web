@@ -6,11 +6,11 @@
 
 </div>
 
-## Features
+## ✨ Features
 
 You can run commands like `ls`, `mkdir`, `rm` on web.
 
-## Installation
+## 💻 Installation
 
 1. Clone the repository.
 
@@ -30,13 +30,18 @@ pnpm install
 pnpm dev
 ```
 
-## Notice
+## ⚠️ Notice
 
 The project is still under development. Therefore, the code is still messy and the features are not complete.
 
-## Inspiration
+## 💡 Inspiration
 
-## License
+This project can't be done without the following projects for inspiration:
+
+- [react-terminal](https://github.com/bony2023/react-terminal)
+- [react-terminal-ui](https://github.com/jonmbake/react-terminal-ui)
+
+## 🪪 License
 
 This project is licensed under the [MIT License](LICENSE).
 
