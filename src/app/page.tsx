@@ -1,10 +1,12 @@
+'use client'
+
 import { configure } from 'browserfs'
 import { useEffect } from 'react'
 
-import Terminal from './components/terminal'
-import { fs } from './fs'
+import Terminal from '@/components/terminal'
+import { fs } from '@/fs'
 
-const App = () => {
+const Home = () => {
   useEffect(() => {
     configure(
       {
@@ -25,4 +27,4 @@ const App = () => {
   return <Terminal />
 }
 
-export default App
+export default Home

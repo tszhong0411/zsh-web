@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import Image from 'next/image'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { toast, Toaster } from 'sonner'
 
 import { TTY_NAME } from '@/config'
@@ -20,10 +21,7 @@ const Terminal = () => {
   const [caretPosition, setCaretPosition] = useState(0)
   const [beforeCaretText, setBeforeCaretText] = useState('')
   const [afterCaretText, setAfterCaretText] = useState('')
-  const formattedDate = useMemo(
-    () => format(new Date(), 'EEE MMM d HH:mm:ss'),
-    []
-  )
+  const [formattedDate, setFormattedDate] = useState('--- --- -- --:--:--')
   const isWindowFocused = useWindowFocus()
   const { commands, appendCommand } = useCommandHistory()
   const [historyIndex, setHistoryIndex] = useState(-1)
@@ -80,10 +78,10 @@ const Terminal = () => {
         toast(
           <div className='flex items-center gap-4'>
             <div className='size-10'>
-              <img
+              <Image
                 src='/images/terminal-icon.png'
-                width='40'
-                height='40'
+                width={40}
+                height={40}
                 alt='Terminal icon'
               />
             </div>
@@ -114,6 +112,7 @@ const Terminal = () => {
     [caretPosition, terminalInput]
   )
 
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   const handleCommand = useCallback(() => {
     output(<Prompt>{terminalInput}</Prompt>)
 
@@ -180,6 +179,7 @@ const Terminal = () => {
 
               fs.readdir(`${directory}/${arg}`, (_, files) => {
                 files &&
+                  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions, sonarjs/no-nested-template-literals
                   output(`${arg}:\n${files.map((file) => `${file}\n`)}\n`)
               })
             }
@@ -196,6 +196,7 @@ const Terminal = () => {
 
           if (args[0] === '-r') {
             for (const arg of args.slice(1)) {
+              // eslint-disable-next-line unicorn/consistent-function-scoping
               const removeDirectoryRecursive = (path: string) => {
                 const files = fs.readdirSync(path)
                 for (const file of files) {
@@ -217,6 +218,7 @@ const Terminal = () => {
           for (const arg of args) {
             fs.unlink(`${directory}/${arg}`, (error) => {
               if (error) {
+                // eslint-disable-next-line sonarjs/no-nested-switch
                 switch (error.code) {
                   case 'EISDIR': {
                     output(`rm: ${arg}: is a directory`)
@@ -334,6 +336,11 @@ const Terminal = () => {
       handleOtherKey,
       handlePaste
     ]
+  )
+
+  useEffect(
+    () => setFormattedDate(format(new Date(), 'EEE MMM d HH:mm:ss')),
+    []
   )
 
   useEffect(() => {

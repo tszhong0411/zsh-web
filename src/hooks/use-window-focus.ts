@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export const useWindowFocus = () => {
-  const [isFocused, setIsFocused] = useState(document.hasFocus())
+  const [isFocused, setIsFocused] = useState(true)
 
   useEffect(() => {
     const onFocus = () => setIsFocused(true)

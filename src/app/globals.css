@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 30 30 30;
-  }
-
   @font-face {
     font-family: 'SF Mono';
     src: url('/fonts/SF-Mono-Regular.otf') format('opentype');
