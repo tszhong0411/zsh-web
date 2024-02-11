@@ -41,6 +41,14 @@ This project can't be done without the following projects for inspiration:
 - [react-terminal](https://github.com/bony2023/react-terminal)
 - [react-terminal-ui](https://github.com/jonmbake/react-terminal-ui)
 
+## 🤝🏻 Contributing
+
+Contributions to Zsh On Web are welcome! If you'd like to contribute new features, bug fixes, or improvements, please fork the repository, make your changes, and submit a pull request.
+
+## ❤️ Credits
+
+Zsh On Web is developed and maintained by [tszhong0411](https://honghong.me).
+
 ## 🪪 License
 
 This project is licensed under the [MIT License](LICENSE).
