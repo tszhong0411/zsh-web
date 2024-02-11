@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 30 30;
+  }
+
+  @font-face {
+    font-family: 'SF Mono';
+    src: url('/fonts/SF-Mono-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SF Mono';
+    src: url('/fonts/SF-Mono-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SF Mono';
+    src: url('/fonts/SF-Mono-Semibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SF Mono';
+    src: url('/fonts/SF-Mono-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SF Pro';
+    src: url('/fonts/SF-Pro-Display-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SF Pro';
+    src: url('/fonts/SF-Pro-Display-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SF Pro';
+    src: url('/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SF Pro';
+    src: url('/fonts/SF-Pro-Display-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+}
+
+/* Override the sonner default styles */
+[data-sonner-toast] {
+  background: #2c2b2c;
+  padding: 16px;
+  border: 1px solid #474647;
+  border-radius: 16px;
+  width: 356px;
+}
+
+[data-sonner-toast] [data-close-button] {
+  opacity: 0;
+  background: #292829 !important;
+  border-color: #474647 !important;
+  color: #dedede !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+[data-sonner-toast] [data-close-button] svg {
+  width: 16px;
+  height: 16px;
+}
+
+[data-sonner-toast]:hover [data-close-button] {
+  opacity: 1;
+}
+
+[data-sonner-toast]:hover [data-close-button]:hover {
+  background: #292829 !important;
+  border-color: #474647 !important;
+}
