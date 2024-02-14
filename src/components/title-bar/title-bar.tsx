@@ -1,6 +1,6 @@
-import { USERNAME } from '@/config'
 import { useScreenSize } from '@/hooks/use-screen-size'
 import { useWindowFocus } from '@/hooks/use-window-focus'
+import { USERNAME } from '@/lib/constants'
 import { cn } from '@/utils/cn'
 
 import Controls from './controls'

@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 
 import './globals.css'
-import site from '@/config'
 import { cn } from '@/utils/cn'
 
 type RootLayoutProps = {
@@ -61,13 +60,18 @@ const SFPro = localFont({
   variable: '--font-sf-pro'
 })
 
+const SITE_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://zsh.honghong.me'
+    : 'http://localhost:3000'
+const SITE_DESCRIPTION =
+  'Experience the power of Zsh on the web. Zsh On Web is a simulation of the Zsh shell, allowing you to try shell commands in a browser-based environment.'
+const SITE_TITLE = 'Zsh On Web | Hong - A Full Stack Developer'
+
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title: {
-    default: site.title,
-    template: `%s ${site.titleTemplate}`
-  },
-  description: site.description,
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   robots: {
     index: true,
     follow: true,
@@ -81,37 +85,44 @@ export const metadata: Metadata = {
   },
   manifest: '/favicon/site.webmanifest',
   twitter: {
+    title: 'Hong',
     card: 'summary_large_image',
-    title: site.name,
-    description: site.description,
     site: '@tszhong0411',
-    siteId: '1152256803746377730',
     creator: '@tszhong0411',
-    creatorId: '1152256803746377730',
-    images: [`${site.url}/images/og.png`]
+    images: [
+      {
+        url: 'https://honghong.me/images/projects/zsh-on-web/cover.png',
+        width: 1280,
+        height: 832,
+        alt: SITE_DESCRIPTION
+      }
+    ]
   },
-  keywords: site.keywords,
+  alternates: {
+    canonical: SITE_URL
+  },
+  keywords: ['zsh', 'zsh on web', 'shell'],
   creator: 'tszhong0411',
   openGraph: {
-    url: site.url,
+    url: SITE_URL,
     type: 'website',
-    title: site.title,
-    siteName: site.title,
-    description: site.description,
+    title: SITE_TITLE,
+    siteName: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     locale: 'en-US',
     images: [
       {
-        url: 'https://zsh.honghong.me/images/og.png',
+        url: 'https://honghong.me/images/projects/zsh-on-web/cover.png',
         width: 1280,
         height: 832,
-        alt: site.description,
+        alt: SITE_DESCRIPTION,
         type: 'image/png'
       }
     ]
   },
   icons: {
-    icon: '/favicon/favicon.svg',
-    shortcut: '/favicon/favicon.svg',
+    icon: '/favicon/favicon.ico',
+    shortcut: '/favicon/favicon.ico',
     apple: [
       {
         url: '/favicon/apple-touch-icon.png',
@@ -119,7 +130,20 @@ export const metadata: Metadata = {
         type: 'image/png'
       }
     ],
-    other: [...site.favicons]
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        url: '/favicon/favicon-16x16.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        url: '/favicon/favicon-32x32.png'
+      }
+    ]
   }
 }
 

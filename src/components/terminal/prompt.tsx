@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react'
 
-import { HOSTNAME, USERNAME } from '@/config'
+import { HOSTNAME, USERNAME } from '@/lib/constants'
 
 type PromptProps = {
   children: ReactNode
@@ -14,7 +14,7 @@ const Prompt = (props: PromptProps) => {
       <span>
         {USERNAME}@{HOSTNAME} ~ %&nbsp;
       </span>
-      <div className='inline whitespace-pre-wrap break-all'>{children}</div>
+      <div className='inline break-all'>{children}</div>
     </div>
   )
 }
