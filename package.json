@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "zsh-on-web",
+  "name": "zsh-web",
   "version": "0.0.0",
   "license": "MIT",
   "type": "module",

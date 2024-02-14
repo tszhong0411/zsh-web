@@ -1,8 +1,8 @@
 <div align="center">
   
-  ![](https://honghong.me/images/projects/zsh-on-web/cover.png)
+  ![](https://honghong.me/images/projects/zsh-web/cover.png)
   
-  # Zsh On Web (WIP)
+  # Zsh Web (WIP)
 
 </div>
 
@@ -15,7 +15,7 @@ You can run commands like `ls`, `mkdir`, `rm` on web.
 1. Clone the repository.
 
 ```shell
-git clone https://github.com/tszhong0411/zsh-on-web.git
+git clone https://github.com/tszhong0411/zsh-web.git
 ```
 
 2. Install dependencies.
@@ -43,11 +43,11 @@ This project can't be done without the following projects for inspiration:
 
 ## 🤝🏻 Contributing
 
-Contributions to Zsh On Web are welcome! If you'd like to contribute new features, bug fixes, or improvements, please fork the repository, make your changes, and submit a pull request.
+Contributions to Zsh Web are welcome! If you'd like to contribute new features, bug fixes, or improvements, please fork the repository, make your changes, and submit a pull request.
 
 ## ❤️ Credits
 
-Zsh On Web is developed and maintained by [tszhong0411](https://honghong.me).
+Zsh Web is developed and maintained by [tszhong0411](https://honghong.me).
 
 ## 🪪 License
 

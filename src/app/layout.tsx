@@ -65,8 +65,8 @@ const SITE_URL =
     ? 'https://zsh.honghong.me'
     : 'http://localhost:3000'
 const SITE_DESCRIPTION =
-  'Experience the power of Zsh on the web. Zsh On Web is a simulation of the Zsh shell, allowing you to try shell commands in a browser-based environment.'
-const SITE_TITLE = 'Zsh On Web | Hong - A Full Stack Developer'
+  'Experience the power of Zsh on the web. Zsh Web is a simulation of the Zsh shell, allowing you to try shell commands in a browser-based environment.'
+const SITE_TITLE = 'Zsh Web | Hong - A Full Stack Developer'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     creator: '@tszhong0411',
     images: [
       {
-        url: 'https://honghong.me/images/projects/zsh-on-web/cover.png',
+        url: 'https://honghong.me/images/projects/zsh-web/cover.png',
         width: 1280,
         height: 832,
         alt: SITE_DESCRIPTION
@@ -101,7 +101,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL
   },
-  keywords: ['zsh', 'zsh on web', 'shell'],
+  keywords: ['zsh', 'zsh web', 'shell'],
   creator: 'tszhong0411',
   openGraph: {
     url: SITE_URL,
@@ -112,7 +112,7 @@ export const metadata: Metadata = {
     locale: 'en-US',
     images: [
       {
-        url: 'https://honghong.me/images/projects/zsh-on-web/cover.png',
+        url: 'https://honghong.me/images/projects/zsh-web/cover.png',
         width: 1280,
         height: 832,
         alt: SITE_DESCRIPTION,
