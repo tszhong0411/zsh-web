@@ -1,6 +1,6 @@
 <div align="center">
   
-  ![](/public/images/og.png)
+  ![](https://honghong.me/images/projects/zsh-on-web/cover.png)
   
   # Zsh On Web (WIP)
 
