@@ -1,11 +1,15 @@
+/**
+ * TODO: Clean up the code
+ * Need to understand how browserfs works
+ */
 import { format } from 'date-fns'
 import Image from 'next/image'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { toast, Toaster } from 'sonner'
 
-import { fs } from '@/fs'
 import { useWindowFocus } from '@/hooks/use-window-focus'
 import { TTY_NAME } from '@/lib/constants'
+import { fs } from '@/lib/fs'
 import { useCommandHistory } from '@/store/use-command-history'
 import { useCurrentDirectory } from '@/store/use-current-directory'
 import { useTerminal } from '@/store/use-terminal'
@@ -179,7 +183,7 @@ const Terminal = () => {
 
               fs.readdir(`${directory}/${arg}`, (_, files) => {
                 files &&
-                  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions, sonarjs/no-nested-template-literals
+                  // eslint-disable-next-line sonarjs/no-nested-template-literals, @typescript-eslint/restrict-template-expressions
                   output(`${arg}:\n${files.map((file) => `${file}\n`)}\n`)
               })
             }

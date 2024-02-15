@@ -1,20 +1,14 @@
 'use client'
 
-import { configure } from 'browserfs'
+import { FileSystem, initialize } from 'browserfs'
 import { useEffect } from 'react'
 
 import Terminal from '@/components/terminal'
-import { fs } from '@/fs'
+import { fs } from '@/lib/fs'
 
 const Home = () => {
   useEffect(() => {
-    configure(
-      {
-        fs: 'LocalStorage',
-        options: undefined
-      },
-      () => 0
-    )
+    initialize(new FileSystem.LocalStorage())
 
     if (!localStorage.getItem('fs-initialized')) {
       fs.mkdir('/Users')
