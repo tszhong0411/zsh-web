@@ -12,8 +12,11 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.cjs",
-    "**/*.mjs",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "prettier.config.js",
+    "next.config.mjs",
+    ".commitlintrc.js",
+    "postcss.config.mjs",
+    "eslint.config.mjs"
   ]
 }

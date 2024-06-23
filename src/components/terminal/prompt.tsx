@@ -1,9 +1,7 @@
-import { type ReactNode } from 'react'
-
 import { HOSTNAME, USERNAME } from '@/lib/constants'
 
 type PromptProps = {
-  children: ReactNode
+  children: React.ReactNode
 }
 
 const Prompt = (props: PromptProps) => {

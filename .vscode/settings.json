@@ -1,16 +1,31 @@
 {
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
 
+  "eslint.runtime": "node",
+  "eslint.useFlatConfig": true,
   "eslint.workingDirectories": [
     {
       "mode": "auto"
     }
   ],
 
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
   "tailwindCSS.experimental.classRegex": [
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    "className\\: '([^']*)'"
-  ]
+    ["cva\\(([^)]*)\\)", "'([^']*)'"],
+    ["cn\\(([^)]*)\\)", "'([^']*)'"],
+    "className\\: '([^']*)'",
+    ["classNames\\: {([^}]*)", "'([^']*)'"]
+  ],
+
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -1,8 +1,8 @@
+import { cn } from '@tszhong0411/utils'
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 
 import './globals.css'
-import { cn } from '@/utils/cn'
 
 type RootLayoutProps = {
   children: React.ReactNode
@@ -61,9 +61,7 @@ const SFPro = localFont({
 })
 
 const SITE_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://zsh.honghong.me'
-    : 'http://localhost:3000'
+  process.env.NODE_ENV === 'production' ? 'https://zsh.honghong.me' : 'http://localhost:3000'
 const SITE_DESCRIPTION =
   'Experience the power of Zsh on the web. Zsh Web is a simulation of the Zsh shell, allowing you to try shell commands in a browser-based environment.'
 const SITE_TITLE = 'Zsh Web | Hong - A Full Stack Developer'

@@ -1,24 +1,16 @@
 'use client'
 
-import { FileSystem, initialize } from 'browserfs'
-import { useEffect } from 'react'
-
+import Debug from '@/components/debug'
 import Terminal from '@/components/terminal'
-import { fs } from '@/lib/fs'
+import { CurrentDirProvider } from '@/contexts/current-dir'
 
-const Home = () => {
-  useEffect(() => {
-    initialize(new FileSystem.LocalStorage())
-
-    if (!localStorage.getItem('fs-initialized')) {
-      fs.mkdir('/Users')
-      fs.mkdir('/Users/user')
-
-      localStorage.setItem('fs-initialized', 'true')
-    }
-  }, [])
-
-  return <Terminal />
+const Page = () => {
+  return (
+    <CurrentDirProvider value={{ dir: '/Users/user' }}>
+      <Terminal />
+      {process.env.NODE_ENV === 'development' ? <Debug /> : null}
+    </CurrentDirProvider>
+  )
 }
 
-export default Home
+export default Page
