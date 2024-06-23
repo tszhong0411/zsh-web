@@ -42,6 +42,11 @@ export const useTerminalInput = () => {
           break
         }
         case 'mkdir': {
+          if (args.length === 0) {
+            output('usage: mkdir [-pv] [-m mode] directory_name ...')
+            return
+          }
+
           for (const arg of args) {
             fs.mkdir(`${dir}/${arg}`, '0777', (error) => {
               if (error && error.code === 'EEXIST') {
