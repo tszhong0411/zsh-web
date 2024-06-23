@@ -1,6 +1,7 @@
 'use client'
 
-import { useTerminalInput } from '@/hooks/use-terminal-input'
+import { useTerminalContext } from '@/contexts/terminal'
+import { useKeyHandler } from '@/hooks/use-key-handler'
 import { splitStringAtIndex } from '@/utils/split-string-at-index'
 
 import TitleBar from '../title-bar'
@@ -9,9 +10,10 @@ import LastLoginMessage from './last-login-message'
 import Prompt from './prompt'
 
 const Terminal = () => {
-  const { terminalInput, caretPosition, content, showLastLoginMessage } = useTerminalInput()
+  const { showLastLoginMessage, content, input, caretPosition } = useTerminalContext()
+  const [beforeCaretText, afterCaretText] = splitStringAtIndex(input, caretPosition)
 
-  const [beforeCaretText, afterCaretText] = splitStringAtIndex(terminalInput, caretPosition)
+  useKeyHandler()
 
   return (
     <>

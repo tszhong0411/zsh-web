@@ -11,31 +11,20 @@ export const init = async () => {
     storeName: DB_NAME
   })
 
-  if (!fs.existsSync('terminal-history')) {
+  if (!fs.existsSync('initialized')) {
+    fs.writeFileSync('initialized', 'true')
     fs.writeFileSync('terminal-history', '[]')
-  }
-
-  if (!fs.existsSync('Users')) {
-    fs.mkdirSync('Users')
-  }
-
-  if (!fs.existsSync('Users/user')) {
-    fs.mkdirSync('Users/user')
+    fs.mkdirSync('Users/user', { recursive: true })
   }
 }
 
 export const getCommandHistory = () => {
-  console.log('history', JSON.parse(fs.readFileSync('terminal-history', 'utf8')))
-
   return JSON.parse(fs.readFileSync('terminal-history', 'utf8')) as string[]
 }
 
 export const writeCommandHistory = (command: string) => {
   const history = getCommandHistory()
-
   const newHistory = [command, ...history]
-
-  console.log('newHistory', newHistory)
 
   fs.writeFileSync('terminal-history', JSON.stringify(newHistory))
 }
