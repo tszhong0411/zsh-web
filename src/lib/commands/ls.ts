@@ -22,38 +22,34 @@ export const ls = async (context: TerminalContext, args: string[], output: Outpu
   if (args.length === 1) {
     try {
       await fs.stat(`${pwd}/${args[0]}`)
+      const files = await fs.readdir(`${pwd}/${args[0]}`)
+      const sortedFiles = sortFiles(files)
+      output(formatFiles(sortedFiles))
     } catch (error) {
       const fsError = getFsError(error)
 
       if (fsError?.code === 'ENOENT') {
         output(`ls: ${args[0]}: No such file or directory`)
-
-        return
       }
-
-      const files = await fs.readdir(`${pwd}/${args[0]}`)
-      const sortedFiles = sortFiles(files)
-      output(formatFiles(sortedFiles))
     }
 
     return
   }
 
-  for (const arg of args) {
+  for (const [index, arg] of args.entries()) {
     try {
       await fs.stat(`${pwd}/${arg}`)
 
       const files = await fs.readdir(`${pwd}/${arg}`)
-
       const sortedFiles = sortFiles(files)
+
       output(`${arg}:\n${formatFiles(sortedFiles)}\n`)
+      index !== args.length - 1 && output('\n')
     } catch (error) {
       const fsError = getFsError(error)
 
       if (fsError?.code === 'ENOENT') {
         output(`ls: ${arg}: No such file or directory`)
-
-        return
       }
     }
   }
