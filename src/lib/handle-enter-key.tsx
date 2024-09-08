@@ -5,12 +5,13 @@ import { clear } from './commands/clear'
 import { ls } from './commands/ls'
 import { mkdir } from './commands/mkdir'
 import { pwd } from './commands/pwd'
+import { rm } from './commands/rm'
 import { whoami } from './commands/whoami'
 import { writeCommandHistory } from './fs'
 
 export type Output = (text: React.ReactNode) => void
 
-export const handleEnterKey = (context: TerminalContext) => {
+export const handleEnterKey = async (context: TerminalContext) => {
   const { input, setInput, setContent, setCaretPosition, setHistoryIndex } = context
 
   const output = (text: React.ReactNode) => {
@@ -59,11 +60,15 @@ export const handleEnterKey = (context: TerminalContext) => {
       break
     }
     case 'mkdir': {
-      mkdir(context, args, output)
+      await mkdir(context, args, output)
       break
     }
     case 'ls': {
       ls(context, args, output)
+      break
+    }
+    case 'rm': {
+      rm(args, output)
       break
     }
     default: {

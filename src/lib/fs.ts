@@ -7,8 +7,12 @@ export { fs } from '@zenfs/core'
 
 export const init = async () => {
   await configure({
-    backend: IndexedDB,
-    storeName: DB_NAME
+    mounts: {
+      '/': {
+        backend: IndexedDB,
+        storeName: DB_NAME
+      }
+    }
   })
 
   if (!fs.existsSync('initialized')) {

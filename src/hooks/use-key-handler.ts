@@ -14,13 +14,13 @@ export const useKeyHandler = () => {
   const context = useTerminalContext()
 
   const handleKey = useCallback(
-    (e: KeyboardEvent) => {
+    async (e: KeyboardEvent) => {
       e.preventDefault()
       const key = e.key
 
       switch (key) {
         case 'Enter': {
-          handleEnterKey(context)
+          await handleEnterKey(context)
           break
         }
         case 'Backspace': {
