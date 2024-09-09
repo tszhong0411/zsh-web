@@ -1,4 +1,5 @@
 import Prompt from '@/components/terminal/prompt'
+import PromptText from '@/components/terminal/prompt-text'
 import type { TerminalContext } from '@/contexts/terminal'
 
 import { clear } from './commands/clear'
@@ -10,26 +11,64 @@ import { whoami } from './commands/whoami'
 import { writeCommandHistory } from './fs'
 
 export type Output = (text: React.ReactNode) => void
+export type ReadInput = (text: string) => Promise<string>
 
 export const handleEnterKey = async (context: TerminalContext) => {
-  const { input, setInput, setContent, setCaretPosition, setHistoryIndex } = context
+  const {
+    input,
+    setInput,
+    setContent,
+    appendContent,
+    setCaretPosition,
+    setHistoryIndex,
+    setIsReadingInput
+  } = context
 
   const output = (text: React.ReactNode) => {
-    setContent((prev) => (
-      <>
-        {prev}
-        <div>{text}</div>
-      </>
-    ))
+    appendContent(<div>{text}</div>)
+  }
+
+  const readInput = (text: string): Promise<string> => {
+    setIsReadingInput(true)
+
+    return new Promise((resolve) => {
+      appendContent(
+        <div>
+          {text}
+          <PromptText
+            callback={(value) => {
+              setIsReadingInput(false)
+              setInput('')
+              setContent((prev) => {
+                const lastIndex = prev.length - 1
+                const lastElement = prev.at(-1)
+
+                const updatedContent = [...prev]
+
+                if (!lastElement) return updatedContent
+
+                updatedContent[lastIndex] = {
+                  ...lastElement,
+                  element: (
+                    <div>
+                      {text}
+                      {value}
+                    </div>
+                  )
+                }
+
+                return updatedContent
+              })
+              resolve(value)
+            }}
+          />
+        </div>
+      )
+    })
   }
 
   // Add the input to the terminal content
-  setContent((prev) => (
-    <>
-      {prev}
-      <Prompt>{input}</Prompt>
-    </>
-  ))
+  appendContent(<Prompt>{input}</Prompt>)
 
   if (input.trim() === '') return
 
@@ -68,7 +107,7 @@ export const handleEnterKey = async (context: TerminalContext) => {
       break
     }
     case 'rm': {
-      rm(args, output)
+      rm(context, args, output, readInput)
       break
     }
     default: {

@@ -28,7 +28,8 @@
     "dayjs": "^1.11.13",
     "next": "14.2.8",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "uid": "^2.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",

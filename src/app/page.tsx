@@ -1,10 +1,11 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { uid } from 'uid'
 
 import Debug from '@/components/debug'
 import Terminal from '@/components/terminal'
-import { type TerminalContext, TerminalProvider } from '@/contexts/terminal'
+import { type Content, type TerminalContext, TerminalProvider } from '@/contexts/terminal'
 import { HOME } from '@/lib/constants'
 import { init } from '@/lib/fs'
 
@@ -14,7 +15,8 @@ const Page = () => {
   const [input, setInput] = useState('')
   const [caretPosition, setCaretPosition] = useState(0)
   const [historyIndex, setHistoryIndex] = useState(-1)
-  const [content, setContent] = useState<React.ReactNode>(null)
+  const [content, setContent] = useState<Content>([])
+  const [isReadingInput, setIsReadingInput] = useState(false)
   const isInitialized = useRef(false)
 
   const context = useMemo<TerminalContext>(
@@ -30,9 +32,20 @@ const Page = () => {
       historyIndex,
       setHistoryIndex,
       content,
-      setContent
+      setContent,
+      appendContent: (element) => {
+        setContent((prev) => [
+          ...prev,
+          {
+            id: uid(),
+            element
+          }
+        ])
+      },
+      isReadingInput,
+      setIsReadingInput
     }),
-    [caretPosition, content, historyIndex, input, pwd, showLastLoginMessage]
+    [caretPosition, content, historyIndex, input, isReadingInput, pwd, showLastLoginMessage]
   )
 
   useEffect(() => {

@@ -53,7 +53,7 @@ export const mkdir = async (context: TerminalContext, args: string[], output: Ou
         }
       }
 
-      return
+      continue
     }
 
     try {

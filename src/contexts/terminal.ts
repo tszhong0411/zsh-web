@@ -1,5 +1,10 @@
 import { createContext, useContext } from 'react'
 
+export type Content = Array<{
+  id: string
+  element: React.ReactElement
+}>
+
 export type TerminalContext = {
   pwd: string
   setPwd: React.Dispatch<React.SetStateAction<string>>
@@ -11,8 +16,11 @@ export type TerminalContext = {
   setCaretPosition: React.Dispatch<React.SetStateAction<number>>
   historyIndex: number
   setHistoryIndex: React.Dispatch<React.SetStateAction<number>>
-  content: React.ReactNode
-  setContent: React.Dispatch<React.SetStateAction<React.ReactNode>>
+  content: Content
+  setContent: React.Dispatch<React.SetStateAction<Content>>
+  appendContent: (element: React.ReactElement) => void
+  isReadingInput: boolean
+  setIsReadingInput: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Context = createContext<TerminalContext | undefined>(undefined)

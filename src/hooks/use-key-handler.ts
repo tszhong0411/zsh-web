@@ -16,10 +16,13 @@ export const useKeyHandler = () => {
   const handleKey = useCallback(
     async (e: KeyboardEvent) => {
       e.preventDefault()
+
       const key = e.key
 
       switch (key) {
         case 'Enter': {
+          if (context.isReadingInput) return
+
           await handleEnterKey(context)
           break
         }
