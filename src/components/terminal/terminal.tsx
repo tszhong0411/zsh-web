@@ -11,7 +11,7 @@ import Prompt from './prompt'
 import PromptText from './prompt-text'
 
 const Terminal = () => {
-  const { showLastLoginMessage, content, isReadingInput } = useTerminalContext()
+  const { pwd, showLastLoginMessage, content, isReadingInput } = useTerminalContext()
 
   useKeyHandler()
 
@@ -23,7 +23,7 @@ const Terminal = () => {
         {/* eslint-disable-next-line @eslint-react/no-clone-element -- it's fine */}
         {content.map((line) => cloneElement(line.element, { key: line.id }))}
         {isReadingInput ? null : (
-          <Prompt>
+          <Prompt pwd={pwd}>
             <PromptText />
           </Prompt>
         )}

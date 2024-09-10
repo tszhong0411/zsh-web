@@ -1,18 +1,19 @@
-import { useTerminalContext } from '@/contexts/terminal'
 import { HOME, HOSTNAME, USERNAME } from '@/lib/constants'
 
 type PromptProps = {
   children: React.ReactNode
+  pwd: string
 }
 
 const Prompt = (props: PromptProps) => {
-  const { children } = props
-  const { pwd } = useTerminalContext()
+  const { children, pwd } = props
+
+  const currentPath = pwd === '/' ? '/' : pwd === HOME ? '~' : pwd.split('/').pop()
 
   return (
     <div>
       <span>
-        {USERNAME}@{HOSTNAME} {pwd === HOME ? '~' : pwd.split('/').pop()} %&nbsp;
+        {USERNAME}@{HOSTNAME} {currentPath} %&nbsp;
       </span>
       <div className='inline break-all'>{children}</div>
     </div>

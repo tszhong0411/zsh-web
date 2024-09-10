@@ -2,6 +2,7 @@ import Prompt from '@/components/terminal/prompt'
 import PromptText from '@/components/terminal/prompt-text'
 import type { TerminalContext } from '@/contexts/terminal'
 
+import { cd } from './commands/cd'
 import { clear } from './commands/clear'
 import { ls } from './commands/ls'
 import { mkdir } from './commands/mkdir'
@@ -15,6 +16,7 @@ export type ReadInput = (text: string) => Promise<string>
 
 export const handleEnterKey = async (context: TerminalContext) => {
   const {
+    pwd: currentPath,
     input,
     setInput,
     setContent,
@@ -68,7 +70,7 @@ export const handleEnterKey = async (context: TerminalContext) => {
   }
 
   // Add the input to the terminal content
-  appendContent(<Prompt>{input}</Prompt>)
+  appendContent(<Prompt pwd={currentPath}>{input}</Prompt>)
 
   if (input.trim() === '') return
 
@@ -108,6 +110,10 @@ export const handleEnterKey = async (context: TerminalContext) => {
     }
     case 'rm': {
       rm(context, args, output, readInput)
+      break
+    }
+    case 'cd': {
+      cd(context, args, output)
       break
     }
     default: {
