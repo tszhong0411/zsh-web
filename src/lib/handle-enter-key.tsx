@@ -2,6 +2,7 @@ import Prompt from '@/components/terminal/prompt'
 import PromptText from '@/components/terminal/prompt-text'
 import type { TerminalContext } from '@/contexts/terminal'
 
+import { cat } from './commands/cat'
 import { cd } from './commands/cd'
 import { clear } from './commands/clear'
 import { ls } from './commands/ls'
@@ -114,6 +115,10 @@ export const handleEnterKey = async (context: TerminalContext) => {
     }
     case 'cd': {
       cd(context, args, output)
+      break
+    }
+    case 'cat': {
+      cat(context, args, output)
       break
     }
     default: {
