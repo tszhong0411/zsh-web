@@ -22,7 +22,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@zenfs/core": "^0.17.1",
+    "@zenfs/core": "^1.0.0",
     "@zenfs/dom": "^0.2.15",
     "arg": "^5.0.2",
     "dayjs": "^1.11.13",
