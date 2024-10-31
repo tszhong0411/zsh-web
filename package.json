@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@zenfs/core": "^1.0.0",
-    "@zenfs/dom": "^0.2.15",
+    "@zenfs/dom": "^1.0.0",
     "arg": "^5.0.2",
     "dayjs": "^1.11.13",
     "next": "14.2.8",
