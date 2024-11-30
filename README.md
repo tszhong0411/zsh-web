@@ -41,6 +41,10 @@ This project can't be done without the following projects for inspiration:
 - [react-terminal](https://github.com/bony2023/react-terminal)
 - [react-terminal-ui](https://github.com/jonmbake/react-terminal-ui)
 
+## 🪄 Under the Hood
+
+It is built using [`@zenfs/core`](https://github.com/zen-fs/core) and [`@zenfs/dom`](https://github.com/zen-fs/dom) for the file system emulation.
+
 ## 🤝🏻 Contributing
 
 Contributions to Zsh Web are welcome! If you'd like to contribute new features, bug fixes, or improvements, please fork the repository, make your changes, and submit a pull request.
