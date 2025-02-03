@@ -64,7 +64,7 @@ const SITE_URL =
   process.env.NODE_ENV === 'production' ? 'https://zsh.honghong.me' : 'http://localhost:3000'
 const SITE_DESCRIPTION =
   'Experience the power of Zsh on the web. Zsh Web is a simulation of the Zsh shell, allowing you to try shell commands in a browser-based environment.'
-const SITE_TITLE = 'Zsh Web | Hong - A Full Stack Developer'
+const SITE_TITLE = 'Zsh Web | Nelson Lai - A Full Stack Engineer'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
